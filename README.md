@@ -33,14 +33,19 @@ $ npm start
 # the produced code can be deployed (rsynced) to a remote server
 $ npm run build
 ```
-
+ 
 ## Application design
 
 #### Components
 
-1. **Customers** Component : This Component displays a list of customers. This Component gets the data from a json file in assets folder
+1. **Purchase** Component : First of all we import some element from react, Core UI, material UI, react-hook-form, react-router-dom  apart from these, other components have been imported that’s are (appConstant, Invoice, Warning popup, ProductNameOverlay, HandleNoBarcode, HandleBarcodeFound, HandleSummary, SearchProductName, HandleServerSideError, HandleClientSideError). Here the useState is used to constantly change the state of variables. Then we can store token in localstorage and whenever make a API call can add the token to headers as token. Using axios we attach token to headers like this. Here the token is stored in localstorage with the key 'Token' and finds product entry by componentId. If it does not receive the success message then it notify error message or receive success message then create object and set variable. Using this same procedure for finding customer using componentId. Then provide the product according to the barcode. After the product selection through bar code, all the documents go to the purchase summary section. There is a price show with some calculations on the product mentioned and the customer information can be seen through the autosuggest. At last its return a invoice after all operations.  
 
-2. **CustomerDetails** Component : This Component Displays the details of the selected customer. This Component gets its data from a json file in assets folder as well. This Component is the Child Component of *Customers* Component
+2. **Sale** Component : First of all we import some element from react, Core UI, material UI, react-hook-form, react-router-dom, react-bootstrap  apart from these, other components have been imported that’s are (appConstant, Invoice, Warning popup, ProductNameOverlay, SearchProductName, HandleSummary, SearchProductName). Here the useState is used to constantly change the state of variables. Then  We can store token in localstorage and whenever make a API call can add the token to headers as token. using axios we attach token to headers like this. Here the token is stored in localstorage with the key 'Token' and finds product entry by componentId and map the product information If it does not receive the success message then it notify error message or receive success message then create object and set variable. Using this same procedure for finding customer using componentId and map the customer information then react hook form handle and handles submit for barcode search. Here is two options update and delete by using handleRemoveClick and handleRowUpdate function then It check if the component is purchase or sale after that it integrate with transactionSettlement. At last its return a invoice after all operations.  
+
+3. **Transaction** Component : In this transaction component we can easily add, edit , delete any transaction method for add method first of all we get autosuggest for coa list then returnCoaId function return coa name wise object after that we get coa list, use react hook form handle then post new items and handle component. For edit this method use axios.put if it is success that show Updated Succeddfully! Otherwise shows it fail. For delete we use axios.delete if it work then show Successfully Deleted!.
+Transaction settlement method is use for if a customer owes money, then this transaction settlement can be used to adjust his outstanding money.
+
+
 
 #### HTTP client
 
