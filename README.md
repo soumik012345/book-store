@@ -85,7 +85,8 @@ web-client-v2
 └── README.md 
 
 ```
-
+## Description About Src Folder 
+In this src folder all component are in view folder, these components are purchase, sale, Transaction Settlement, Product, Customer.
 ```
 7.	src
 8.	│   App.css
